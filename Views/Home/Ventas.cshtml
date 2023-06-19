@@ -1,0 +1,74 @@
+﻿@model IEnumerable<GenerarPDF_NetCore_SQLServer.Models.Venta>
+
+@{
+    ViewData["Title"] = "Ventas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ventas</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocumentoCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImpuestoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdVenta)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentoCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImpuestoTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdVenta">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdVenta">Details</a> |
+                        <a asp-action="ImprimirVenta" asp-route-idventa="@item.IdVenta"class="btn btn-info text-danger">
+                            Imprimir Factura
+                        </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
